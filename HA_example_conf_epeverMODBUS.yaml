@@ -1,0 +1,263 @@
+
+       
+modbus:
+  
+  ############### epever 1 192.168.2.200 00227 serial 566
+  - type: rtuovertcp
+    host: 192.168.1.51
+    port: 9999
+    name: "epever00227"
+    #close_comm_on_error: false
+    timeout: 9
+    delay: 0
+    message_wait_milliseconds: 50
+    #retry_on_empty: true
+    #retries: 10
+    sensors:
+      - name: "mbep1 batt volt"
+        unique_id: mbep1_batt_volt
+        unit_of_measurement: V
+        device_class: "voltage"
+        data_type: int16
+        slave: 1
+        address: 13082
+        scale: 0.01
+        precision: 1
+        input_type: input
+        scan_interval: 10
+      - name: "mbep1 sol volt" 
+        unique_id: mbep1_sol_volt
+        unit_of_measurement: V
+        device_class: "voltage"
+        slave: 1
+        address: 12544
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 sol amp" 
+        unique_id: mbep1_sol_amp
+        unit_of_measurement: A
+        device_class: "current"
+        slave: 1
+        address: 12545
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 sol status"
+        unique_id: mbep1_sol_status
+        slave: 1
+        address: 12545
+        input_type: input
+        precision: 2
+        #swap: word
+      - name: "mbep1 sol watt Low"
+        unique_id: mbep1_sol_wattL
+        unit_of_measurement: W
+        device_class: "power"
+        slave: 1
+        address: 12546
+        input_type: input
+        data_type: int32
+        scale: 0.01
+        #count: 2
+        precision: 2
+        swap: word
+      - name: "mbep1 sol watt High"
+        unique_id: mbep1_sol_wattH
+        unit_of_measurement: kWh
+        slave: 1
+        address: 12547
+        input_type: input
+        data_type: int32
+        scale: 0.01
+        #count: 2
+        precision: 2
+        swap: word
+#     - name: "Solaire kWh"
+#       unique_id: epever.solairewattkwh
+#       unit_of_measurement: "kWh"
+#       slave: 1
+#       address: 12546
+#       input_type: input
+#       data_type: int32
+#       scale: 0.0000000001
+#       count: 2
+#       precision: 4
+#       scan_interval: 20
+#       device_class: energy
+#       state_class: total_increasing
+      - name: "mbep1 batt SOC"
+        unique_id: mbep1_batt_SOC
+        unit_of_measurement: "%"
+        device_class: battery
+        slave: 1
+        address: 12570
+        input_type: input
+      - name: "mbep1 Charging watt" 
+        unique_id: mbep1_batt_watt
+        unit_of_measurement: W
+        device_class: "power"
+        slave: 1
+        address: 12801
+        input_type: input
+        scale: 0.01
+        #count: 2
+        precision: 2
+        #swap: word
+      - name: "mbep1 batt max volt"
+        unique_id: mbep1_bat_maxvolt
+        unit_of_measurement: V
+        device_class: "voltage"
+        slave: 1
+        address: 13058
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 batt min volt"
+        unique_id: mbep1_bat_minvolt
+        unit_of_measurement: V
+        device_class: "voltage"
+        slave: 1
+        address: 13059
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 batt volt2"
+        unique_id: mbep1_batt_volt2
+        unit_of_measurement: V
+        device_class: "voltage"
+        slave: 1
+        address: 13082
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 batt amp"
+        unique_id: mbep1_batt_amp
+        unit_of_measurement: A
+        device_class: "current"
+        slave: 1
+        address: 13083
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 load amp"
+        unique_id: mbep1_loadamp
+        unit_of_measurement: A
+        device_class: "current"
+        slave: 1
+        address: 12557
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 load watt Low"
+        unique_id: mbep1_loadwattL
+        unit_of_measurement: W
+        device_class: "power"
+        slave: 1
+        address: 12558  # low 12550  high 12551 #12558
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 load watt High"
+        unique_id: mbep1_loadwattH
+        unit_of_measurement: W
+        device_class: "power"
+        slave: 1
+        address: 12559  # low 12550  high 12551 #12558
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 load volt"
+        unique_id: mbep1_loadvolt
+        unit_of_measurement: V
+        device_class: "voltage"
+        slave: 1
+        address: 12556
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 batt temp"
+        unique_id: mbep1.battemp
+        unit_of_measurement: °C
+        device_class: "temperature"
+        slave: 1
+        address: 12560
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 unit temp"
+        unique_id: mbep1_unittemp
+        unit_of_measurement: °C
+        device_class: "temperature"
+        slave: 1
+        address: 12561
+        input_type: input
+        scale: 0.01
+        precision: 2
+      - name: "mbep1 prod day"
+        unique_id: mbep1_prodday
+        unit_of_measurement: KWh
+        state_class: "total_increasing"
+        device_class: "energy"
+        slave: 1
+        address: 13068
+        input_type: input
+        data_type: int32
+        scale: 0.01
+        precision: 2
+        #count: 2
+        swap: word
+      - name: "mbep1 prod day2"
+        unique_id: mbep1_prodday2
+        unit_of_measurement: KWh
+        state_class: "total_increasing"
+        device_class: "energy"
+        slave: 1
+        address: 13068
+        input_type: input
+        data_type: int32
+        scale: 0.01
+        precision: 2
+        #count: 2
+        swap: word
+      - name: "mbep1 prod month"
+        unique_id: mbep1_prodmonth
+        unit_of_measurement: KWh
+        state_class: "total_increasing"
+        device_class: "energy"
+        slave: 1
+        address: 13070
+        input_type: input
+        data_type: int32
+        scale: 0.01
+        precision: 2
+        #count: 2
+        swap: word
+      - name: "mbep1 prod year"
+        unique_id: mbep1_prodyear
+        unit_of_measurement: KWh
+        state_class: "total_increasing"
+        device_class: "energy"
+        slave: 1
+        address: 13072
+        input_type: input
+        data_type: int32
+        scale: 0.01
+        precision: 2
+        #count: 2
+        swap: word
+      - name: "mbep1 prod tot"
+        unique_id: mbep1_prodtot
+        unit_of_measurement: KWh
+        state_class: "total_increasing"
+        device_class: "energy"
+        slave: 1
+        address: 13074
+        input_type: input
+        data_type: int32
+        scale: 0.01
+        precision: 2
+        #count: 2
+        swap: word
+
+  

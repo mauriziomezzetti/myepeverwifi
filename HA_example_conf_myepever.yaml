@@ -1,0 +1,227 @@
+
+
+mqtt:
+    sensor:
+    
+    ########################################
+    ###   EPEVER 1 (192.168.1.200) serial 00227   #
+    ########################################
+    
+      - name: "ep1 in volt"
+        unique_id: ep1_in_volt
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["chargingInputVoltage"] }}'
+        unit_of_measurement: "V"
+        device_class: "voltage"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+    
+      - name: "ep1 in current"
+        unique_id: ep1_in_current
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["chargingInputCurrent"] }}'
+        unit_of_measurement: "A"
+        device_class: "current"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+    
+      - name: "ep1 in power"
+        unique_id: ep1_in_power
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["chargingInputPower"] }}'
+        #last_reset_value_template: "{{value_json.lastUpdate | int | timestamp_custom('%d.%m.%Y %H:%M'}}"
+        unit_of_measurement: "W"
+        device_class: "power"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+    
+      - name: "ep1 batt charging volt"
+        state_topic: "home/epever-solar/epever1/data"
+        unique_id: ep1_batt_charging_volt
+        value_template: '{{value_json["chargingOutputVoltage"] }}'
+        unit_of_measurement: "V"
+        device_class: voltage
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+
+      - name: "ep1 batt charging current"
+        state_topic: "home/epever-solar/epever1/data"
+        unique_id: ep1_batt_charging_current
+        value_template: '{{value_json["chargingOutputCurrent"] }}'
+        unit_of_measurement: "A"
+        device_class: current
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+     
+      - name: "ep1 batt charging power"
+        unique_id: ep1_batt_charging_power
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["chargingOutputPower"] }}'
+        unit_of_measurement: "W"
+        device_class: "energy"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+        
+      - name: "ep1 ext temp"
+        unique_id: ep1_ext_temp
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["batteryTemperature"] }}'
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+        
+      - name: "ep1 unit temp"
+        unique_id: ep1_unit_temp
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["temperatureInside"] }}'
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+        
+      - name: "ep1 powerunit temp"
+        unique_id: ep1_powerunit_temp
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["powerComponentsTemperature"] }}'
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+        
+      - name: "ep1 batt temp"
+        unique_id: ep1_batt_temp
+        state_topic: "home/epever-solar/epever1/data"
+        value_template: '{{ value_json["remoteBatteryTemperature"] }}'
+        unit_of_measurement: "°C"
+        device_class: "temperature"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+           
+      - name: "ep1 batt SOC"
+        state_topic: "home/epever-solar/epever1/data"
+        unique_id: ep1_batt_SOC
+        value_template: '{{value_json["batterySoC"] }}'
+        unit_of_measurement: "%"
+        device_class: battery
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+           
+      - name: "ep1 charging status"
+        state_topic: "home/epever-solar/epever1/status"
+        unique_id: ep1_charging_status
+        value_template: '{{value_json["equipmentStatus"]["battery"] }}'
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+           
+      - name: "ep1 today batt max volt"
+        state_topic: "home/epever-solar/epever1/stat"
+        unique_id: ep1_today_batt_max_volt
+        value_template: '{{value_json["maxBatteryVoltToday"] }}'
+        unit_of_measurement: "V"
+        device_class: voltage
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02" 
+         
+      - name: "ep1 today batt min volt"
+        state_topic: "home/epever-solar/epever1/stat"
+        unique_id: ep1_today_batt_min_volt
+        value_template: '{{value_json["minBatteryVoltToday"] }}'
+        unit_of_measurement: "V"
+        device_class: voltage
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+
+      - name: "ep1 energy today"
+        state_topic: "home/epever-solar/epever1/stat"
+        unique_id: ep1_energy_today
+        value_template: '{{value_json["generatedEnergyToday"] }}'
+        device_class: "energy"
+        state_class: "total_increasing"
+        unit_of_measurement: "kWh"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+
+      - name: "ep1 energy month"
+        state_topic: "home/epever-solar/epever1/stat"
+        unique_id: ep1_energy_month
+        value_template: '{{value_json["generatedEnergyMonth"] }}'
+        device_class: "energy"
+        state_class: "total_increasing"
+        unit_of_measurement: "kWh"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+
+      - name: "ep1 energy year"
+        state_topic: "home/epever-solar/epever1/stat"
+        unique_id: ep1_energy_year
+        value_template: '{{value_json["generatedEnergyYear"] }}'
+        device_class: "energy"
+        state_class: "total_increasing"
+        unit_of_measurement: "kWh"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
+
+      - name: "ep1 energy total"
+        state_topic: "home/epever-solar/epever1/stat"
+        unique_id: ep1_energy_total
+        value_template: '{{value_json["totalGeneratedEnergy"] }}'
+        device_class: "energy"
+        state_class: "total_increasing"
+        unit_of_measurement: "kWh"
+        device:
+           identifiers: Tracer6420AN1
+           manufacturer: "Epever"
+           name: Epever00227 
+           model: "V01.02"
